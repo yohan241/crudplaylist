@@ -1,4 +1,5 @@
 <?php $this->load->view('templates/header'); ?>
+<div class="container  bg-white vh-100 border border-dark position-absolute start-50 translate-middle-x z-n1"> </div>
 <div class="container mt-5">
     <h2>My Songs</h2>
     <?php if (empty($songs)): ?>
@@ -21,7 +22,7 @@
                         <td><?php echo htmlspecialchars($song['artist']); ?></td>
                         <td><?php echo htmlspecialchars($song['genre']); ?></td>
                         <td>
-                            <audio controls>
+                            <audio controls class="w-100">
                                 <source src="<?php echo base_url($song['file_path']); ?>" type="audio/mpeg">
                                 Your browser does not support the audio element.
                             </audio>

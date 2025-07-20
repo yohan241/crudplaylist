@@ -1,5 +1,6 @@
 <?php $this->load->view('templates/header'); ?>
-<div class="container mt-5">
+<div class="container  bg-white vh-100 border border-dark position-absolute start-50 translate-middle-x z-n1"> </div>
+<div class="container mt-5 w-100">
     <h2>Add Song to Playlist: <?php echo htmlspecialchars($playlist['name']); ?></h2>
     <form method="post" action="">
         <div class="mb-3">

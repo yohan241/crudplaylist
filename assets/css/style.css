@@ -1,0 +1,27 @@
+body {
+	height: 100%;
+	width: 100%;
+	
+
+	background: conic-gradient(
+		#a5db4e 90deg,
+		#94d231 90deg 180deg,
+		#a5db4e 180deg 270deg,
+		#94d231 270deg
+	);
+	background-repeat: repeat;
+	background-size: 60px 60px;
+
+	animation: scrollBackground 10s linear infinite;
+}
+
+@keyframes scrollBackground {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: -60px 60px;
+	}
+}
+
+

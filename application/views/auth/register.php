@@ -2,9 +2,11 @@
 <html>
 <head>
     <title>Register</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <link href="https://bootswatch.com/5/brite/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="container  bg-white vh-100 border border-dark position-absolute start-50 translate-middle-x z-n1"> </div>
 <div class="container mt-5">
     <h2>Register</h2>
     <?php if (isset($error)): ?>

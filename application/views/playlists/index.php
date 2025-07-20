@@ -1,4 +1,5 @@
 <?php $this->load->view('templates/header'); ?>
+<div class="container  bg-white vh-100 border border-dark position-absolute start-50 translate-middle-x z-n1"> </div>
 <div class="container mt-5">
     <h2>My Playlists</h2>
     <a href="<?php echo site_url('create_playlist'); ?>" class="btn btn-success mb-3">Create New Playlist</a>

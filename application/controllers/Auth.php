@@ -5,11 +5,13 @@ class Auth extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('User_model');
-        $this->load->library('session');
+
         $this->load->helper(array('form', 'url'));
+       
     }
 
     public function register() {
+        
         if ($this->input->method() === 'post') {
             $username = $this->input->post('username');
             $email = $this->input->post('email');
@@ -18,12 +20,17 @@ class Auth extends CI_Controller {
 
             if ($password !== $confirm) {
                 $data['error'] = 'Passwords do not match.';
-                $this->load->view('auth/register', $data);
+                   $this->load->view('auth/register', $data);
                 return;
             }
 
             if ($this->User_model->get_by_username($username)) {
                 $data['error'] = 'Username already exists.';
+                $this->load->view('auth/register', $data);
+                return;
+            }
+            if ($this->User_model->get_by_email($email)) {
+                $data['error'] = 'Email is already in use.';
                 $this->load->view('auth/register', $data);
                 return;
             }
