@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<?php $this->load->view('templates/header'); ?>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <link href="https://bootswatch.com/5/brite/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container  bg-white vh-100 border border-dark position-absolute start-50 translate-middle-x z-n1"> </div>
-<div class="container mt-5">
+<div class="container mt-3 px-4">
     <h2>Login</h2>
     <?php if (isset($error)): ?>
         <div class="alert alert-danger"><?php echo $error; ?></div>
@@ -25,5 +21,4 @@
         <a href="<?php echo site_url('register'); ?>" class="btn btn-link">Don't have an account? Register</a>
     </form>
 </div>
-</body>
-</html>
+<?php $this->load->view('templates/footer'); ?>

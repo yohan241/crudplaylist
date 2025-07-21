@@ -1,12 +1,11 @@
 <?php $this->load->view('templates/header'); ?>
-<div class="container  bg-white vh-100 border border-dark position-absolute start-50 translate-middle-x z-n1"> </div>
-<div class="container mt-5">
+<div class="container mt-3 px-4">
     <h2>My Playlists</h2>
     <a href="<?php echo site_url('create_playlist'); ?>" class="btn btn-success mb-3">Create New Playlist</a>
     <?php if (empty($playlists)): ?>
         <div class="alert alert-info">You have no playlists yet.</div>
     <?php else: ?>
-        <table class="table table-striped">
+        <table class="table table-striped table-responsive table-hover">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -32,7 +31,7 @@
                         <td colspan="3">
                             <?php if (!empty($playlist_songs[$playlist['id']])): ?>
                                 <div class="mb-2"><strong>Songs in this playlist:</strong></div>
-                                <table class="table table-bordered">
+                                <table class="table table-bordered table-hover table-responsive">
                                     <thead>
                                         <tr>
                                             <th>Title</th>
@@ -51,7 +50,7 @@
                                                 <td><?php echo htmlspecialchars($song['genre']); ?></td>
                                                 <td><?php echo htmlspecialchars($song['username']); ?></td>
                                                 <td>
-                                                    <audio controls>
+                                                    <audio controls class="w-100">
                                                         <source src="<?php echo base_url($song['file_path']); ?>" type="audio/mpeg">
                                                         Your browser does not support the audio element.
                                                     </audio>

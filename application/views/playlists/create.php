@@ -1,6 +1,5 @@
 <?php $this->load->view('templates/header'); ?>
-<div class="container  bg-white vh-100 border border-dark position-absolute start-50 translate-middle-x z-n1"> </div>
-<div class="container mt-5">
+<div class="container mt-3 px-4">
     <h2>Create Playlist</h2>
     <?php if (isset($error)): ?>
         <div class="alert alert-danger"><?php echo $error; ?></div>

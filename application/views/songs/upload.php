@@ -1,6 +1,6 @@
 <?php $this->load->view('templates/header'); ?>
-<div class="container  bg-white vh-100 border border-dark position-absolute start-50 translate-middle-x z-n1"> </div>
-<div class="container mt-5">
+
+<div class="container mt-3 px-4">
     <h2>Upload Song</h2>
     <?php if (isset($error)): ?>
         <div class="alert alert-danger"><?php echo $error; ?></div>
@@ -19,7 +19,20 @@
         </div>
         <div class="mb-3">
             <label for="genre" class="form-label">Genre</label>
-            <input type="text" class="form-control" id="genre" name="genre">
+            <select class="form-select" id="genre" name="genre" required>
+                <option value="">Select genre</option>
+                <option>Pop</option>
+                <option>Rock</option>
+                <option>Hip-Hop</option>
+                <option>Jazz</option>
+                <option>Classical</option>
+                <option>Electronic</option>
+                <option>R&B</option>
+                <option>Country</option>
+                <option>Reggae</option>
+                <option>Metal</option>
+                <option>Other</option>
+            </select>
         </div>
         <div class="mb-3">
             <label for="song_file" class="form-label">Song File</label>

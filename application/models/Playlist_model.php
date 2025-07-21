@@ -19,17 +19,20 @@ class Playlist_model extends CI_Model {
 
     public function get_by_user($user_id) {
         $this->db->where('user_id', $user_id);
+        $this->db->where('is_valid', 1);
         $query = $this->db->get('playlists');
         return $query->result_array();
     }
 
     public function get($id) {
-        $query = $this->db->get_where('playlists', array('id' => $id));
+        $query = $this->db->get_where('playlists', array('id' => $id, 'is_valid' => 1));
         return $query->row_array();
     }
 
     public function delete($id) {
-        $this->db->delete('playlists', array('id' => $id));
+        $this->db->where('id', $id);
+        $this->db->set('is_valid', 0);
+        $this->db->update('playlists');
     }
 
     public function add_song($playlist_id, $song_id) {
@@ -46,10 +49,14 @@ class Playlist_model extends CI_Model {
         $this->db->join('songs', 'playlist_songs.song_id = songs.id');
         $this->db->join('users', 'songs.user_id = users.id', 'left');
         $this->db->where('playlist_songs.playlist_id', $playlist_id);
+        $this->db->where('songs.is_valid', 1);
         $query = $this->db->get();
         return $query->result_array();
     }
     public function remove_song($playlist_id, $song_id) {
-        $this->db->delete('playlist_songs', array('playlist_id' => $playlist_id, 'song_id' => $song_id));
+        $this->db->where('playlist_id', $playlist_id);
+        $this->db->where('song_id', $song_id);
+        $this->db->set('is_valid', 0);
+        $this->db->update('playlist_songs');
     }
 }

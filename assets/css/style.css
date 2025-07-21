@@ -24,4 +24,25 @@ body {
 	}
 }
 
+.lexend-mega {
+  font-family: "Lexend Mega", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 300;
+}
+.lexend-mega-hi {
+  font-family: "Lexend Mega", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.navbar{
+	border: none;
+	border-bottom: 3px solid black;
+}
+
+.shadowy{
+	box-shadow:3px 3px 0 0 var(--bs-border-color);
+}
 

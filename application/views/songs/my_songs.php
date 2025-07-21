@@ -1,11 +1,10 @@
 <?php $this->load->view('templates/header'); ?>
-<div class="container  bg-white vh-100 border border-dark position-absolute start-50 translate-middle-x z-n1"> </div>
-<div class="container mt-5">
+<div class="container mt-3 px-4">
     <h2>My Songs</h2>
     <?php if (empty($songs)): ?>
         <div class="alert alert-info">You have not uploaded any songs yet.</div>
     <?php else: ?>
-        <table class="table table-striped">
+        <table class="table table-striped table-hover table-responsive">
             <thead>
                 <tr>
                     <th>Title</th>

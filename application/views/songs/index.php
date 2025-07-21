@@ -1,11 +1,10 @@
 <?php $this->load->view('templates/header'); ?>
-<div class="container bg-white vh-100 border border-dark position-absolute start-50 translate-middle-x z-n1"> </div>
-<div class="container mt-5">
+<div class="container mt-3 px-4">
     <h2>All Songs</h2>
     <?php if (empty($songs)): ?>
         <div class="alert alert-info">No songs uploaded yet.</div>
     <?php else: ?>
-        <table class="table table-striped">
+        <table class="table table-striped table-hover table-responsive">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -23,7 +22,7 @@
                         <td><?php echo htmlspecialchars($song['genre']); ?></td>
                         <td><?php echo htmlspecialchars($song['username']); ?></td>
                         <td>
-                            <audio controls>
+                            <audio controls class="w-100"s>
                                 <source src="<?php echo base_url($song['file_path']); ?>" type="audio/mpeg">
                                 Your browser does not support the audio element.
                             </audio>

@@ -3,9 +3,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Songs extends CI_Controller {
+    public function search() {
+        $q = $this->input->get('q');
+        $songs = [];
+        if ($q) {
+            $songs = $this->Song_model->search($q);
+        }
+        $data['songs'] = $songs;
+        $data['search_query'] = $q;
+        $this->load->view('songs/index', $data);
+    }
     public function __construct() {
         parent::__construct();
-        $this->load->model('Song_model'); // This loads as $this->Song_model
+        $this->load->model('Song_model');
         $this->load->library('session');
         $this->load->helper(array('form', 'url'));
     }
