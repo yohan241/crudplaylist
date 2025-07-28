@@ -52,23 +52,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'pages/view';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
 // User authentication routes
 $route['register'] = 'auth/register';
 $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logout';
+
 // Song upload route
 $route['upload_song'] = 'songs/upload';
+
 // Song listing route
 $route['songs'] = 'songs/index';
+
 // Playlist routes
 $route['playlists'] = 'playlists/index';
 $route['create_playlist'] = 'playlists/create';
+
 // Add song to playlist
 $route['add_song_to_playlist/(:num)'] = 'playlists/add_song/$1';
+
 // Delete playlist
 $route['delete_playlist/(:num)'] = 'playlists/delete/$1';
+
 // Remove song from playlist
 $route['remove_song_from_playlist/(:num)/(:num)'] = 'playlists/remove_song/$1/$2';
+
 // My Songs routes
 $route['my_songs'] = 'songs/my_songs';
 $route['edit_song/(:num)'] = 'songs/edit/$1';

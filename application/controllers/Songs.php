@@ -1,9 +1,18 @@
-   
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Songs extends CI_Controller {
-    public function search() {
+class Songs extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Song_model');
+        $this->load->library('session');
+        $this->load->helper(array('form', 'url'));
+    }
+
+    public function search()
+    {
         $q = $this->input->get('q');
         $songs = [];
         if ($q) {
@@ -13,14 +22,10 @@ class Songs extends CI_Controller {
         $data['search_query'] = $q;
         $this->load->view('songs/index', $data);
     }
-    public function __construct() {
-        parent::__construct();
-        $this->load->model('Song_model');
-        $this->load->library('session');
-        $this->load->helper(array('form', 'url'));
-    }
 
-    public function upload() {
+
+    public function upload()
+    {
         if (!$this->session->userdata('user_id')) {
             redirect('login');
         }
@@ -48,14 +53,16 @@ class Songs extends CI_Controller {
         }
     }
 
-    public function index() {
+    public function index()
+    {
         $CI =& get_instance();
         $CI->load->model('Song_model');
         $songs = $CI->Song_model->get_all_with_user();
         $data['songs'] = $songs;
         $this->load->view('songs/index', $data);
     }
-     public function my_songs() {
+    public function my_songs()
+    {
         if (!$this->session->userdata('user_id')) {
             redirect('login');
         }
@@ -65,7 +72,8 @@ class Songs extends CI_Controller {
         $this->load->view('songs/my_songs', $data);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         if (!$this->session->userdata('user_id')) {
             redirect('login');
         }
@@ -85,7 +93,8 @@ class Songs extends CI_Controller {
         $this->load->view('songs/edit', $data);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         if (!$this->session->userdata('user_id')) {
             redirect('login');
         }
