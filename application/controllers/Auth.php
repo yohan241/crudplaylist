@@ -82,6 +82,7 @@ class Auth extends CI_Controller {
             $user = $this->User_model->get_by_username($username);
             if ($user && password_verify($password, $user['password_hash'])) {
                 $this->session->set_userdata('user_id', $user['id']);
+                $this->session->set_userdata('username', $username);
                 redirect('pages/view');
             } else {
                 $data['error'] = 'Invalid username or password.';

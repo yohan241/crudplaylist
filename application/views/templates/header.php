@@ -21,7 +21,7 @@
 
   <div class="container  bg-white h-100 border border-dark position-absolute start-50 translate-middle-x z-n1  border-top-0 shadowy position-fixed"> </div>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg sticky bg-primary" data-bs-theme="light">
+  <nav class="navbar navbar-expand-lg  bg-primary" data-bs-theme="light">
     <div class="container">
       <a class="navbar-brand lexend-mega-hi " href="#"><img src="<?= base_url('assets/images/logo.png'); ?>"> </a>
       <a class="navbar-brand lexend-mega-hi" href="#">PlayUs</a>
@@ -47,7 +47,7 @@
             <div class="dropdown-menu" data-bs-popper="static">
               <?php if ($this->session->userdata('user_id')): ?>
                 <span class="dropdown-item text-muted">Logged in as
-                  <strong><?= isset($username) ? htmlspecialchars($username) : 'User'; ?></strong></span>
+                  <strong><?= $this->session->userdata('username') ? htmlspecialchars($this->session->userdata('username')) : 'User'; ?></strong></span>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?= site_url(); ?>my_songs">My Songs</a>
                 <a class="dropdown-item" href="<?= site_url(); ?>playlists">My Playlists</a>
@@ -55,7 +55,7 @@
                 <a class="dropdown-item" href="<?= site_url(); ?>upload_song">Upload Song</a>
                 <a class="dropdown-item" href="<?= site_url(); ?>create_playlist">Create Playlist</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="<?= site_url('logout'); ?>">Sign Out</a>
+                <a class="dropdown-item text-danger" href="<?= site_url('logout'); ?>" id="signOutBtn">Sign Out</a>
               <?php else: ?>
                 <a class="dropdown-item text-primary-emphasis" href="<?= site_url('login'); ?>">
                   <i class="bi bi-box-arrow-in-right"></i> Login
@@ -73,3 +73,16 @@
     </div>
   </nav>
   <!-- End Navbar -->
+
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  var signOutBtn = document.getElementById('signOutBtn');
+  if (signOutBtn) {
+    signOutBtn.addEventListener('click', function(e) {
+      if (!confirm('Are you sure you want to sign out?')) {
+        e.preventDefault();
+      }
+    });
+  }
+});
+</script>

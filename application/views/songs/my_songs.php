@@ -4,7 +4,7 @@
     <?php if (empty($songs)): ?>
         <div class="alert alert-info">You have not uploaded any songs yet.</div>
     <?php else: ?>
-        <table class="table table-striped table-hover table-responsive">
+        <table class="table table-primary table-striped table-hover table-responsive">
             <thead>
                 <tr>
                     <th>Title</th>

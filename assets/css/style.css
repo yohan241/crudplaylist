@@ -12,7 +12,7 @@ body {
 	background-repeat: repeat;
 	background-size: 60px 60px;
 
-	animation: scrollBackground 10s linear infinite;
+	animation: scrollBackground 4s linear infinite;
 }
 
 @keyframes scrollBackground {
@@ -46,3 +46,66 @@ body {
 	box-shadow:3px 3px 0 0 var(--bs-border-color);
 }
 
+/* animations */
+
+.neo-brutal-icon::before{
+	  transition: transform 0.3s ease-in-out;
+}
+.neo-brutal-icon::before:hover {
+  transform: rotate(360deg);
+}
+
+.neo-brutal-window{
+	transition: 
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.neo-brutal-window:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 16px 16px 0 #222; 
+}
+
+
+.center-table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+table {
+    border-collapse:separate;
+    border:solid black 1px;
+    border-radius:15px;
+	border-spacing: 0px;
+	
+	
+}
+
+td, th {
+    border-left:solid black 1px;
+    border-top:solid black 1px;
+	
+}
+
+
+
+th {
+	
+	background-color: transparent !important;
+    border-top: none;
+}
+
+td:first-child, th:first-child {
+     border-left: none;
+}
+
+.nav-link:hover {
+	color: white !important;
+	transform: translate(-2px, -2px);
+
+}
+
+img:hover{
+	transform: scale(1.1);
+	rotate: -10deg;
+}

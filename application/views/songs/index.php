@@ -11,7 +11,7 @@
                     <th>Artist</th>
                     <th>Genre</th>
                     <th>Uploaded By</th>
-                    <th>Play</th>
+                    <th style=" text-align: center;">Play</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,11 +21,12 @@
                         <td><?php echo htmlspecialchars($song['artist']); ?></td>
                         <td><?php echo htmlspecialchars($song['genre']); ?></td>
                         <td><?php echo htmlspecialchars($song['username']); ?></td>
-                        <td>
-                            <audio controls class="w-100"s>
-                                <source src="<?php echo base_url($song['file_path']); ?>" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
+                        <td style=" text-align: center;">
+                            <button class="btn btn-success btn-sm" onclick='window.startPlaylist([{
+                                url: "<?php echo base_url($song['file_path']); ?>",
+                                title: <?php echo json_encode($song['title']); ?>,
+                                artist: <?php echo json_encode($song['artist']); ?>
+                            }], 0)'>Play</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>

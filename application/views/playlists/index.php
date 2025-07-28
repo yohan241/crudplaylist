@@ -38,7 +38,7 @@
                                             <th>Artist</th>
                                             <th>Genre</th>
                                             <th>Uploaded By</th>
-                                            <th>Play</th>
+                                            <th style=" text-align: center;">Play</th>
                                             <th>Remove</th>
                                         </tr>
                                     </thead>
@@ -49,11 +49,12 @@
                                                 <td><?php echo htmlspecialchars($song['artist']); ?></td>
                                                 <td><?php echo htmlspecialchars($song['genre']); ?></td>
                                                 <td><?php echo htmlspecialchars($song['username']); ?></td>
-                                                <td>
-                                                    <audio controls class="w-100">
-                                                        <source src="<?php echo base_url($song['file_path']); ?>" type="audio/mpeg">
-                                                        Your browser does not support the audio element.
-                                                    </audio>
+                                                <td style=" text-align: center;">
+                                                    <button class="btn btn-success btn-sm" onclick='window.startPlaylist([
+                                                        <?php foreach ($playlist_songs[$playlist['id']] as $s) { ?>
+                                                            { url: "<?php echo base_url($s['file_path']); ?>", title: <?php echo json_encode($s['title']); ?>, artist: <?php echo json_encode($s['artist']); ?> },
+                                                        <?php } ?>
+                                                    ], <?php echo $song['id']; ?> - <?php echo $playlist_songs[$playlist['id']][0]['id']; ?>)'>Play</button>
                                                 </td>
                                                 <td>
                                                     <a href="<?php echo site_url('remove_song_from_playlist/' . $playlist['id'] . '/' . $song['id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Remove this song from playlist?');">Remove</a>
