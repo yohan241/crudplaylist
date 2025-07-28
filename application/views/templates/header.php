@@ -23,8 +23,8 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg  bg-primary" data-bs-theme="light">
     <div class="container">
-      <a class="navbar-brand lexend-mega-hi " href="#"><img src="<?= base_url('assets/images/logo.png'); ?>"> </a>
-      <a class="navbar-brand lexend-mega-hi" href="#">PlayUs</a>
+      <a class="navbar-brand lexend-mega-hi " href="<?= base_url()?>"><img src="<?= base_url('assets/images/logo.png'); ?>"> </a>
+      <a class="navbar-brand lexend-mega-hi" href="<?= base_url()?>">PlayUs</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
         aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

@@ -31,7 +31,8 @@
                         <td colspan="3">
                             <?php if (!empty($playlist_songs[$playlist['id']])): ?>
                                 <div class="mb-2"><strong>Songs in this playlist:</strong></div>
-                                <table class="table table-bordered table-hover table-responsive">
+                                <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th>Title</th>
@@ -62,7 +63,7 @@
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
-                                </table>
+                                </table></div>
                             <?php else: ?>
                                 <div class="text-muted">No songs in this playlist yet.</div>
                             <?php endif; ?>

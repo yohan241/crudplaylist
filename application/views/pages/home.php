@@ -5,7 +5,7 @@
     border-radius: 18px 18px 0 0;
     box-shadow: 8px 8px 0 #222;
     margin-bottom: 2rem;
-    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
     position: relative;
     max-width: 500px;
   }

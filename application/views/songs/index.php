@@ -4,7 +4,8 @@
     <?php if (empty($songs)): ?>
         <div class="alert alert-info">No songs uploaded yet.</div>
     <?php else: ?>
-        <table class="table table-striped table-hover table-responsive">
+        <div class="table-responsive">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Title</th>
@@ -31,7 +32,7 @@
                     </tr>
                 <?php endforeach; ?>
             </tbody>
-        </table>
+        </table></div>
     <?php endif; ?>
 </div>
 <?php $this->load->view('templates/footer'); ?>
