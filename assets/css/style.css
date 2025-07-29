@@ -1,40 +1,40 @@
 /* Responsive Music Player Footer */
 #musicPlayerFooter {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 9999;
-  min-height: 70px;
-  background: #fff;
-  border-top: 2px solid #222;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
-  display: none; /* shown when playing */
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 9999;
+	min-height: 70px;
+	background: #fff;
+	border-top: 2px solid #222;
+	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+	display: none; /* shown when playing */
 }
 
 @media (max-width: 576px) {
-  #musicPlayerFooter {
-	flex-direction: column !important;
-	min-height: 110px;
-	padding: 1rem 0.5rem;
-	font-size: 0.95rem;
-	gap: 0.5rem;
-  }
-  #musicPlayerFooter .d-flex {
-	flex-direction: column !important;
-	align-items: stretch !important;
-	gap: 0.5rem !important;
-  }
-  #musicPlayerFooter button, #musicPlayerFooter input[type="range"] {
-	width: 100%;
-	margin-bottom: 0.5rem;
-  }
+	#musicPlayerFooter {
+		flex-direction: column !important;
+		min-height: 110px;
+		padding: 1rem 0.5rem;
+		font-size: 0.95rem;
+		gap: 0.5rem;
+	}
+	#musicPlayerFooter .d-flex {
+		flex-direction: column !important;
+		align-items: stretch !important;
+		gap: 0.5rem !important;
+	}
+	#musicPlayerFooter button,
+	#musicPlayerFooter input[type="range"] {
+		width: 100%;
+		margin-bottom: 0.5rem;
+	}
 }
 body {
 	height: 100%;
 	width: 100%;
-	
 
 	background: conic-gradient(
 		#a5db4e 90deg,
@@ -58,87 +58,91 @@ body {
 }
 
 .lexend-mega {
-  font-family: "Lexend Mega", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-weight: 300;
+	font-family: "Lexend Mega", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-weight: 300;
 }
 .lexend-mega-hi {
-  font-family: "Lexend Mega", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-weight: 700;
+	font-family: "Lexend Mega", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+	font-weight: 700;
 }
 
-.navbar{
+.navbar {
 	border: none;
 	border-bottom: 3px solid black;
 }
 
-.shadowy{
-	box-shadow:3px 3px 0 0 var(--bs-border-color);
+.shadowy {
+	box-shadow: 3px 3px 0 0 var(--bs-border-color);
 }
 
 /* animations */
 
-.neo-brutal-icon::before{
-	  transition: transform 0.3s ease-in-out;
+.neo-brutal-icon::before {
+	transition: transform 0.3s ease-in-out;
 }
 .neo-brutal-icon::before:hover {
-  transform: rotate(360deg);
+	transform: rotate(360deg);
 }
 
-.neo-brutal-window{
-	transition: 
-	transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-	box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+.neo-brutal-window {
+	transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+		box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	border: 4px solid #222;
+	border-radius: 18px 18px 0 0;
+	box-shadow: 8px 8px 0 #222;
+
+	padding: 1.5rem 1.5rem 1.5rem 1.5rem;
 }
 
 .neo-brutal-window:hover {
-  transform: translate(-5px, -5px);
-  box-shadow: 16px 16px 0 #222; 
+	transform: translate(-5px, -5px);
+	box-shadow: 16px 16px 0 #222;
 }
-
 
 .center-table {
-		margin-left: auto;
-		margin-right: auto;
-	}
+	margin-left: auto;
+	margin-right: auto;
+}
 
 table {
-	border-collapse:separate;
-	border:solid black 1px;
-	border-radius:15px;
+	border-collapse: separate;
+	border: solid black 1px;
+	border-radius: 15px;
 	border-spacing: 0px;
-	
-	
 }
 
-td, th {
-	border-left:solid black 1px;
-	border-top:solid black 1px;
-	
+td,
+th {
+	border-left: solid black 1px;
+	border-top: solid black 1px;
 }
-
-
 
 th {
-	
 	background-color: transparent !important;
 	border-top: none;
 }
 
-td:first-child, th:first-child {
-	 border-left: none;
+td:first-child,
+th:first-child {
+	border-left: none;
 }
 
 .nav-link:hover {
 	color: white !important;
 	transform: translate(-2px, -2px);
-
 }
 
-img:hover{
+img:hover {
 	transform: scale(1.1);
 	rotate: -10deg;
+}
+
+.icon-outline {
+	color: #fff; /* Color of the icon itself */
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+		1px 1px 0 #000; /* White outline */
 }

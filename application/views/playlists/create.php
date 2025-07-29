@@ -6,6 +6,7 @@
     <?php endif; ?>
     <form method="post" action="<?php echo site_url('create_playlist'); ?>">
         <div class="mb-3">
+            
             <label for="name" class="form-label">Playlist Name</label>
             <input type="text" class="form-control" id="name" name="name" required>
         </div>

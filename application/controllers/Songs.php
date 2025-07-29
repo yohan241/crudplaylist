@@ -30,22 +30,42 @@ class Songs extends CI_Controller
             redirect('login');
         }
         if ($this->input->method() === 'post') {
+            // Song file upload config
             $config['upload_path'] = './uploads/songs/';
             $config['allowed_types'] = 'mp3|wav|ogg';
             $config['max_size'] = 10240; // 10MB
             $this->load->library('upload', $config);
+
+            // Upload song file
             if (!$this->upload->do_upload('song_file')) {
                 $data['error'] = $this->upload->display_errors();
                 $this->load->view('songs/upload', $data);
                 return;
             }
             $file_data = $this->upload->data();
+            $file_path = 'uploads/songs/' . $file_data['file_name'];
+
+            // Image upload config
+            $image_path = null;
+            if (!empty($_FILES['song_image']['name'])) {
+                $img_config['upload_path'] = './uploads/images/';
+                $img_config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
+                $img_config['max_size'] = 2048; // 2MB
+                $this->load->library('upload', $img_config, 'imgupload');
+                if ($this->imgupload->do_upload('song_image')) {
+                    $img_data = $this->imgupload->data();
+                    $image_path = 'uploads/images/' . $img_data['file_name'];
+                }
+            }
+
             $title = $this->input->post('title');
             $artist = $this->input->post('artist');
             $genre = $this->input->post('genre');
             $user_id = $this->session->userdata('user_id');
-            $file_path = 'uploads/songs/' . $file_data['file_name'];
-            $this->Song_model->create($user_id, $title, $artist, $genre, $file_path);
+
+            // Update your Song_model->create to accept $image_path
+            $this->Song_model->create($user_id, $title, $artist, $genre, $file_path, $image_path);
+
             $data['success'] = 'Song uploaded successfully!';
             $this->load->view('songs/upload', $data);
         } else {
@@ -73,25 +93,51 @@ class Songs extends CI_Controller
     }
 
     public function edit($id)
-    {
-        if (!$this->session->userdata('user_id')) {
-            redirect('login');
-        }
-        $user_id = $this->session->userdata('user_id');
-        $song = $this->Song_model->get($id);
-        if (!$song || $song['user_id'] != $user_id) {
-            show_error('Unauthorized');
-        }
-        if ($this->input->method() === 'post') {
-            $title = $this->input->post('title');
-            $artist = $this->input->post('artist');
-            $genre = $this->input->post('genre');
-            $this->Song_model->update($id, $title, $artist, $genre);
-            redirect('my_songs');
-        }
-        $data['song'] = $song;
-        $this->load->view('songs/edit', $data);
+{
+    if (!$this->session->userdata('user_id')) {
+        redirect('login');
     }
+
+    $user_id = $this->session->userdata('user_id');
+    $song = $this->Song_model->get($id);
+
+    if (!$song || $song['user_id'] != $user_id) {
+        show_error('Unauthorized');
+    }
+
+    if ($this->input->method() === 'post') {
+        $title = $this->input->post('title');
+        $artist = $this->input->post('artist');
+        $genre = $this->input->post('genre');
+
+        $song_image = $song['image_path']; // default to existing image
+
+        // Check if a file was uploaded
+        if (!empty($_FILES['song_image']['name'])) {
+            $config['upload_path'] = './uploads/images/';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['max_size'] = 2048;
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('song_image')) {
+                $upload_data = $this->upload->data();
+                $song_image = 'uploads/images/' . $upload_data['file_name'];
+            } else {
+                // You can optionally show error or keep existing image
+                $data['upload_error'] = $this->upload->display_errors();
+            }
+        }
+
+        // Update the song with or without new image
+        $this->Song_model->update($id, $title, $artist, $genre, $song_image);
+
+        redirect('my_songs');
+    }
+
+    $data['song'] = $song;
+    $this->load->view('songs/edit', $data);
+}
 
     public function delete($id)
     {

@@ -61,13 +61,7 @@
     </div>
   </div>
    <div class="row g-4 justify-content-center row-cols-2">
-    <div class="col-12 col-md-6 col-lg-5  d-flex">
-      <div class="neo-brutal-window flex-fill">
-        <div class="neo-brutal-title"><i class="bi bi-person-plus neo-brutal-icon"></i>Sign Up & Login</div>
-        <p>Create your own account to upload music, manage your playlists, and connect with other users.</p>
-        <a href="<?= site_url('register'); ?>" class="neo-brutal-btn btn">Get Started</a>
-      </div>
-    </div>
+    
     <div class="col-12 col-md-6 col-lg-5  d-flex">
       <div class="neo-brutal-window flex-fill">
         <div class="neo-brutal-title"><i class="bi bi-cloud-arrow-up neo-brutal-icon"></i>Upload Songs</div>
@@ -92,31 +86,43 @@
     </div>
   </div>
   
+  <!-- WHEN NOT REGISTERED -->
+
   <?php else: ?>
-    <div class="row mb-5 ">
-    <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
-      <h1 class="display-4 fw-bold mb-3">Register to PlayUs Now!</h1>
-      <p class="lead">A simple platform to upload your own music, create and manage your own playlists, and discover
-        songs from the community. Sign up, share your tracks, and build your music world!</p>
-    </div>
-  </div>
-   <div class="row g-4 justify-content-center row-cols-2">
-    <div class="col-12 col-md-6 col-lg-5  d-flex">
-      <div class="neo-brutal-window flex-fill">
-        <div class="neo-brutal-title"><i class="bi bi-person-plus neo-brutal-icon"></i>Sign Up & Login</div>
-        <p>Create your own account to upload music, manage your playlists, and connect with other users.</p>
-        <a href="<?= site_url('register'); ?>" class="neo-brutal-btn btn">Get Started</a>
+    <!-- Modern Hero Section -->
+    <div class="row mb-5 justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
+        <img src="<?= base_url('assets/images/logo.png'); ?>" alt="PlayUs Logo" style="max-width:120px; border-radius:24px; box-shadow:0 8px 32px #a5db4e55;" class="mb-4">
+        <h1 class="display-2 fw-bold mb-3 lexend-mega-hi" style="letter-spacing:1px;">PlayUs</h1>
+        <p class="lead mb-4" style="font-size:1.35rem; color:#222;">A creative music platform for sharing, discovering, and curating your own playlists. Join a vibrant community of music lovers and creators.</p>
+        <a href="<?= site_url('register'); ?>" class="btn btn-lg neo-brutal-btn shadowy px-5 py-3 mb-2" style="font-size:1.2rem;">Get Started Free</a>
+        <div class="mt-3">
+          <a href="<?= site_url('songs'); ?>" class="btn btn-outline-dark btn-lg neo-brutal-btn px-4 py-2">Explore Songs Without Registering</a>
+        </div>
       </div>
     </div>
-    
-    <div class="col-12 col-md-6 col-lg-5  d-flex">
-      <div class="neo-brutal-window flex-fill">
-        <div class="neo-brutal-title"><i class="bi bi-search neo-brutal-icon"></i>Discover & Search</div>
-        <p>Browse and search for songs uploaded by the community. Find new music and add it to your playlists.</p>
-        <a href="<?= site_url('songs'); ?>" class="neo-brutal-btn btn">Explore Songs</a>
+
+    <!-- Features Section -->
+    <div class="row g-4 justify-content-center mt-4">
+      <div class="col-12 col-md-6 col-lg-4 d-flex">
+        <div class="neo-brutal-window flex-fill text-center p-4" style="border-radius:24px;">
+          <div class="neo-brutal-title" style="font-size:1.3rem;"><i class="bi bi-cloud-arrow-up neo-brutal-icon"></i>Upload Your Music</div>
+          <p>Share your original tracks with the world. MP3, WAV, and OGG supported.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 d-flex">
+        <div class="neo-brutal-window flex-fill text-center p-4" style="border-radius:24px;">
+          <div class="neo-brutal-title" style="font-size:1.3rem;"><i class="bi bi-music-note-list neo-brutal-icon"></i>Create Playlists</div>
+          <p>Build and manage custom playlists from your favorite songs.</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 d-flex">
+        <div class="neo-brutal-window flex-fill text-center p-4" style="border-radius:24px;">
+          <div class="neo-brutal-title" style="font-size:1.3rem;"><i class="bi bi-search neo-brutal-icon"></i>Discover & Search</div>
+          <p>Find new music from the community and add it to your playlists.</p>
+        </div>
       </div>
     </div>
-  </div>
   <?php endif; ?>
 
  

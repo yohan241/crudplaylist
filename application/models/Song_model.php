@@ -9,13 +9,14 @@ class Song_model extends CI_Model {
         $this->load->database();
     }
 
-    public function create($user_id, $title, $artist, $genre, $file_path) {
+    public function create($user_id, $title, $artist, $genre, $file_path, $image_path = null) {
         $data = array(
             'user_id' => $user_id,
             'title' => $title,
             'artist' => $artist,
             'genre' => $genre,
-            'file_path' => $file_path
+            'file_path' => $file_path,
+            'image_path' => $image_path
         );
         $this->db->insert('songs', $data);
         return $this->db->insert_id();
@@ -26,6 +27,7 @@ class Song_model extends CI_Model {
         $this->db->from('songs');
         $this->db->join('users', 'songs.user_id = users.id', 'left');
         $this->db->where('songs.is_valid', 1);
+        $this->db->order_by("songs.id", "desc");
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -33,6 +35,7 @@ class Song_model extends CI_Model {
     public function get_by_user($user_id) {
         $this->db->where('user_id', $user_id);
         $this->db->where('is_valid', 1);
+        $this->db->order_by("id", "desc");
         $query = $this->db->get('songs');
         return $query->result_array();
     }
@@ -42,14 +45,17 @@ class Song_model extends CI_Model {
         return $query->row_array();
     }
 
-    public function update($id, $title, $artist, $genre) {
-        $data = array(
+    public function update($id, $title, $artist, $genre, $image_path)
+    {
+        $data = [
             'title' => $title,
             'artist' => $artist,
-            'genre' => $genre
-        );
+            'genre' => $genre,
+            'image_path' => $image_path
+        ];
+    
         $this->db->where('id', $id);
-        $this->db->update('songs', $data);
+        return $this->db->update('songs', $data);
     }
 
     public function delete($id) {
@@ -68,6 +74,7 @@ class Song_model extends CI_Model {
         $this->db->or_like('songs.artist', $query);
         $this->db->or_like('songs.genre', $query);
         $this->db->group_end();
+        $this->db->order_by("songs.id", "desc");
         $result = $this->db->get()->result_array();
         return $result;
     }

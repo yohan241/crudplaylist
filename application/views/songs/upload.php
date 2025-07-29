@@ -14,6 +14,10 @@
             <input type="text" class="form-control" id="title" name="title" required>
         </div>
         <div class="mb-3">
+            <label for="song_image" class="form-label">Song Image (optional)</label>
+            <input type="file" class="form-control" id="song_image" name="song_image" accept="image/*">
+        </div>
+        <div class="mb-3">
             <label for="artist" class="form-label">Artist</label>
             <input type="text" class="form-control" id="artist" name="artist">
         </div>

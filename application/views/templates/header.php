@@ -19,73 +19,128 @@
 
 <body>
 
-  <div class="container  bg-white h-100 border border-dark position-absolute start-50 translate-middle-x z-n1  border-top-0 shadowy position-fixed"> </div>
+  <div
+    class="container  bg-white h-100 border border-dark position-absolute start-50 translate-middle-x z-n1  border-top-0 shadowy position-fixed">
+  </div>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg  bg-primary" data-bs-theme="light">
-    <div class="container">
-      <a class="navbar-brand lexend-mega-hi " href="<?= base_url()?>"><img src="<?= base_url('assets/images/logo.png'); ?>"> </a>
-      <a class="navbar-brand lexend-mega-hi" href="<?= base_url()?>">PlayUs</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
-        aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse show" id="navbarColor01" style="">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="<?= site_url(); ?>">Home
-              <span class="visually-hidden">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?= site_url(); ?>songs">Recent Songs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?= site_url(); ?>playlists">My Playlist</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?= site_url(); ?>my_songs">My Songs</a>
-          </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-              aria-expanded="true">Create</a>
-            <div class="dropdown-menu" data-bs-popper="static">
-              <?php if ($this->session->userdata('user_id')): ?>
-                <span class="dropdown-item text-muted">Logged in as
-                  <strong><?= $this->session->userdata('username') ? htmlspecialchars($this->session->userdata('username')) : 'User'; ?></strong></span>
-                
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?= site_url(); ?>upload_song">Upload Your Song</a>
-                <a class="dropdown-item" href="<?= site_url(); ?>create_playlist">Create a Playlist</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="<?= site_url('logout'); ?>" id="signOutBtn">Sign Out</a>
-              <?php else: ?>
-                <a class="dropdown-item text-primary-emphasis" href="<?= site_url('login'); ?>">
-                  <i class="bi bi-box-arrow-in-right"></i> Login
-                </a>
-              <?php endif; ?>
-            </div>
-          </li>
+  <?php if ($this->session->userdata('user_id')): ?>
+    <nav class="navbar navbar-expand-lg  bg-primary" data-bs-theme="light">
+      <div class="container">
+        <a class="navbar-brand lexend-mega-hi " href="<?= base_url() ?>"><img
+            src="<?= base_url('assets/images/logo.png'); ?>"> </a>
+        <a class="navbar-brand lexend-mega-hi" href="<?= base_url() ?>">PlayUs</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+          aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse show" id="navbarColor01" style="">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="<?= site_url(); ?>">Home
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= site_url(); ?>songs">Recent Songs</a>
+            </li>
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= site_url(); ?>playlists">My Playlist</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= site_url(); ?>my_songs">My Songs</a>
+            </li>
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="true">Create</a>
+              <div class="dropdown-menu" data-bs-popper="static">
+                <?php if ($this->session->userdata('user_id')): ?>
+                  <span class="dropdown-item text-muted">Logged in as
+                    <strong><?= $this->session->userdata('username') ? htmlspecialchars($this->session->userdata('username')) : 'User'; ?></strong></span>
 
-        </ul>
-        <form class="d-flex me-2" method="get" action="<?= site_url('songs/search'); ?>">
-          <input class="form-control me-sm-2" type="search" name="q" placeholder="Search songs..." value="<?= isset($search_query) ? htmlspecialchars($search_query) : '' ?>">
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="<?= site_url(); ?>upload_song">Upload Your Song</a>
+                  <a class="dropdown-item" href="<?= site_url(); ?>create_playlist">Create a Playlist</a>
+                 
+                <?php else: ?>
+                  <a class="dropdown-item text-primary-emphasis" href="<?= site_url('login'); ?>">
+                    <i class="bi bi-box-arrow-in-right"></i> Login
+                  </a>
+                <?php endif; ?>
+              </div>
+            </li>
+
+          </ul>
+          <form class="d-flex me-2" method="get" action="<?= site_url('songs/search'); ?>">
+            <input class="form-control me-sm-2" type="search" name="q" placeholder="Find songs, artists..."
+              value="<?= isset($search_query) ? htmlspecialchars($search_query) : '' ?>">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          
+          <div class="d-flex me-2">
+
+            <a class="btn btn-danger" href="<?= site_url('logout'); ?>"><i class="bi bi-box-arrow-right"></i></a>
+          </div>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+
+
+  <?php else: ?>
+    <nav class="navbar navbar-expand-lg  bg-primary" data-bs-theme="light">
+      <div class="container">
+        <a class="navbar-brand lexend-mega-hi " href="<?= base_url() ?>"><img
+            src="<?= base_url('assets/images/logo.png'); ?>"> </a>
+        <a class="navbar-brand lexend-mega-hi" href="<?= base_url() ?>">PlayUs</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+          aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse show" id="navbarColor01" style="">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="<?= site_url(); ?>">Home
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+
+          </ul>
+          <div class="d-flex me-2">
+
+          <a class="btn btn-success" href="<?= site_url('login'); ?>"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+
+
+  <?php endif; ?>
+
   <!-- End Navbar -->
 
+
+
+
+
   <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var signOutBtn = document.getElementById('signOutBtn');
-  if (signOutBtn) {
-    signOutBtn.addEventListener('click', function(e) {
-      if (!confirm('Are you sure you want to sign out?')) {
-        e.preventDefault();
+    document.addEventListener('DOMContentLoaded', function () {
+      var signOutBtn = document.getElementById('signOutBtn');
+      if (signOutBtn) {
+        signOutBtn.addEventListener('click', function (e) {
+          if (!confirm('Are you sure you want to sign out?')) {
+            e.preventDefault();
+          }
+        });
       }
     });
-  }
-});
-</script>
+  </script>
