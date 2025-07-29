@@ -37,23 +37,26 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= site_url(); ?>songs">Songs</a>
+            <a class="nav-link" href="<?= site_url(); ?>songs">Recent Songs</a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="<?= site_url(); ?>playlists">My Playlist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= site_url(); ?>my_songs">My Songs</a>
+          </li>
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-              aria-expanded="true">Account</a>
+              aria-expanded="true">Create</a>
             <div class="dropdown-menu" data-bs-popper="static">
               <?php if ($this->session->userdata('user_id')): ?>
                 <span class="dropdown-item text-muted">Logged in as
                   <strong><?= $this->session->userdata('username') ? htmlspecialchars($this->session->userdata('username')) : 'User'; ?></strong></span>
+                
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?= site_url(); ?>my_songs">My Songs</a>
-                <a class="dropdown-item" href="<?= site_url(); ?>playlists">My Playlists</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?= site_url(); ?>upload_song">Upload Song</a>
-                <a class="dropdown-item" href="<?= site_url(); ?>create_playlist">Create Playlist</a>
+                <a class="dropdown-item" href="<?= site_url(); ?>upload_song">Upload Your Song</a>
+                <a class="dropdown-item" href="<?= site_url(); ?>create_playlist">Create a Playlist</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-danger" href="<?= site_url('logout'); ?>" id="signOutBtn">Sign Out</a>
               <?php else: ?>

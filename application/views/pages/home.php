@@ -56,7 +56,7 @@
   <?php if ($this->session->userdata('user_id')): ?>
    <div class="row mb-5 ">
     <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
-      <h1 class="display-4 fw-bold mb-3">Welcome to PlayUs</h1>
+      <h1 class="display-4 fw-bold mb-3">Welcome to PlayUs, <strong><?= $this->session->userdata('username') ? htmlspecialchars($this->session->userdata('username')) : 'User'; ?></strong>!</h1>
       <p class="lead">You can start listening to songs, create playlists, and share your music to the others in the world!</p>
     </div>
   </div>
