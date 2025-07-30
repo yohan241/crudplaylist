@@ -1,4 +1,4 @@
-<?php $this->load->view('templates/header'); ?>
+ 
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
         <link href="https://bootswatch.com/5/brite/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -25,4 +25,4 @@
         </div>
     </form>
 </div></div>
-<?php $this->load->view('templates/footer'); ?>
+ 

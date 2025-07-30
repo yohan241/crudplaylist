@@ -54,51 +54,60 @@
   
 
   <?php if ($this->session->userdata('user_id')): ?>
-   <div class="row mb-5 ">
-    <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
-      <h1 class="display-4 fw-bold mb-3">Welcome to PlayUs, <strong><?= $this->session->userdata('username') ? htmlspecialchars($this->session->userdata('username')) : 'User'; ?></strong>!</h1>
-      <p class="lead">You can start listening to songs, create playlists, and share your music to the others in the world!</p>
-    </div>
-  </div>
-   <div class="row g-4 justify-content-center row-cols-2">
-    
-    <div class="col-12 col-md-6 col-lg-5  d-flex">
-      <div class="neo-brutal-window flex-fill">
-        <div class="neo-brutal-title"><i class="bi bi-cloud-arrow-up neo-brutal-icon"></i>Upload Songs</div>
-        <p>Share your music with the world! Upload your own songs in MP3, WAV, or OGG format.</p>
-        <a href="<?= site_url('upload_song'); ?>" class="neo-brutal-btn btn">Upload Now</a>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-5  d-flex">
-      <div class="neo-brutal-window flex-fill">
-        <div class="neo-brutal-title"><i class="bi bi-music-note-list neo-brutal-icon"></i>Create & Manage Playlists
-        </div>
-        <p>Build custom playlists from your favorite songs. Add, remove, and organize tracks easily.</p>
-        <a href="<?= site_url('playlists'); ?>" class="neo-brutal-btn btn">View Playlists</a>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-5  d-flex">
-      <div class="neo-brutal-window flex-fill">
-        <div class="neo-brutal-title"><i class="bi bi-search neo-brutal-icon"></i>Discover & Search</div>
-        <p>Browse and search for songs uploaded by the community. Find new music and add it to your playlists.</p>
-        <a href="<?= site_url('songs'); ?>" class="neo-brutal-btn btn">Explore Songs</a>
-      </div>
-    </div>
-  </div>
+   
   
+  <div class="dashboard-box">
+  <div class="row my-5 ">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
+      <h4> Welcome to</h4>
+      <h1 class="display-4 fw-bold mb-3 text-decoration-underline"> Play<span class="text-primary">Us,</span></h1><h1><strong><?= $this->session->userdata('username') ? htmlspecialchars($this->session->userdata('username')) : 'User'; ?></strong>!</h1>
+      <p class="lead">What would you like to do today?</p>
+    </div>
+  </div>
+
+    <div class="dashboard-actions">
+      <a href="<?= site_url('upload_song'); ?>" class="text-decoration-none text-dark">
+        <div class="dash-card">
+          <i class="bi bi-cloud-arrow-up-fill"></i>
+          <h4>Upload Song</h4>
+        </div>
+      </a>
+      <a href="<?= site_url('my_songs'); ?>" class="text-decoration-none text-dark ">
+        <div class="dash-card">
+          <i class="bi bi-music-note-beamed"></i>
+          <h4>My Songs</h4>
+        </div>
+      </a>
+      <a href="<?= site_url('playlists'); ?>" class="text-decoration-none text-dark">
+        <div class="dash-card">
+          <i class="bi bi-list-ul"></i>
+          <h4>My Playlists</h4>
+        </div>
+      </a>
+      <a href="<?= site_url('songs'); ?>" class="text-decoration-none text-dark">
+        <div class="dash-card">
+          <i class="bi bi-binoculars"></i>
+          <h4>Explore Music</h4>
+        </div>
+      </a>
+    </div>
+
+    <div class="dash-footer">
+      <small>🎵 Keep creating. Keep exploring. PlayUs is yours.</small>
+    </div>
+  </div>
   <!-- WHEN NOT REGISTERED -->
 
   <?php else: ?>
     <!-- Modern Hero Section -->
-    <div class="row mb-5 justify-content-center">
+    <div class="row my-5 justify-content-center">
+      
       <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
         <img src="<?= base_url('assets/images/logo.png'); ?>" alt="PlayUs Logo" style="max-width:120px; border-radius:24px; box-shadow:0 8px 32px #a5db4e55;" class="mb-4">
         <h1 class="display-2 fw-bold mb-3 lexend-mega-hi" style="letter-spacing:1px;">PlayUs</h1>
         <p class="lead mb-4" style="font-size:1.35rem; color:#222;">A creative music platform for sharing, discovering, and curating your own playlists. Join a vibrant community of music lovers and creators.</p>
-        <a href="<?= site_url('register'); ?>" class="btn btn-lg neo-brutal-btn shadowy px-5 py-3 mb-2" style="font-size:1.2rem;">Get Started Free</a>
-        <div class="mt-3">
-          <a href="<?= site_url('songs'); ?>" class="btn btn-outline-dark btn-lg neo-brutal-btn px-4 py-2">Explore Songs Without Registering</a>
-        </div>
+        <a href="<?= site_url('register'); ?>" class="btn btn-lg neo-brutal-btn shadowy px-5 py-3 mb-2" style="font-size:1.2rem;">Register Now to Enjoy the Experience!</a>
+        
       </div>
     </div>
 
@@ -127,3 +136,71 @@
 
  
 </div>
+
+  <style>
+    
+
+    .dashboard-box {
+      background: #fff;
+      border: 4px solid #222;
+      border-radius: 24px;
+      box-shadow: 8px 8px 0 #222;
+      max-width: 1200px;
+      margin: 3rem auto;
+      margin-top: 0%;
+      margin-bottom: 0%;
+      text-align: center;
+      height: 80%;
+    }
+
+    .dashboard-box h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .dashboard-actions {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .dash-card {
+      background: #e7e7e7;
+      border: 4px solid #222;
+      box-shadow: 6px 6px 0 #222;
+      border-radius: 20px;
+      padding: 1.5rem 1rem;
+      width: 220px;
+      cursor: pointer;
+      transition: 0.1s ease-in-out;
+      text-align: center;
+    }
+
+    .dash-card:hover {
+      background: #a5db4e;
+      box-shadow: 8px 8px 0 #222;
+      transform: translate(-3px,-3px);
+    }
+
+    .dash-card i {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .dash-card h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .dash-footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+
+<body>
+
+  

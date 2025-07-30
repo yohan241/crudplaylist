@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Songs extends CI_Controller
+class Songs extends MY_Controller
 {
     public function __construct()
     {
@@ -9,18 +9,20 @@ class Songs extends CI_Controller
         $this->load->model('Song_model');
         $this->load->library('session');
         $this->load->helper(array('form', 'url'));
+        $this->load->library('set_views');
     }
 
     public function search()
     {
-        $q = $this->input->get('q');
+        $q = $this->input->get('q', TRUE);
         $songs = [];
         if ($q) {
             $songs = $this->Song_model->search($q);
         }
         $data['songs'] = $songs;
         $data['search_query'] = $q;
-        $this->load->view('songs/index', $data);
+
+        $this->render($this->set_views->songs(), $data);
     }
 
 
@@ -32,7 +34,7 @@ class Songs extends CI_Controller
         if ($this->input->method() === 'post') {
             // Song file upload config
             $config['upload_path'] = './uploads/songs/';
-            $config['allowed_types'] = 'mp3|wav|ogg';
+            $config['allowed_types'] = 'mp3|wav|ogg|m4a|flac|aac';
             $config['max_size'] = 10240; // 10MB
             $this->load->library('upload', $config);
 
@@ -58,18 +60,20 @@ class Songs extends CI_Controller
                 }
             }
 
-            $title = $this->input->post('title');
-            $artist = $this->input->post('artist');
-            $genre = $this->input->post('genre');
-            $user_id = $this->session->userdata('user_id');
+            $title = $this->input->post('title', TRUE);
+            $artist = $this->input->post('artist', TRUE);
+            $genre = $this->input->post('genre',    TRUE);
+            $user_id = $this->session->userdata('user_id', TRUE);
 
             // Update your Song_model->create to accept $image_path
             $this->Song_model->create($user_id, $title, $artist, $genre, $file_path, $image_path);
 
             $data['success'] = 'Song uploaded successfully!';
-            $this->load->view('songs/upload', $data);
+           
+            $this->render($this->set_views->songs(), $data);
         } else {
-            $this->load->view('songs/upload');
+            
+            $this->render($this->set_views->addsong());
         }
     }
 
@@ -77,9 +81,19 @@ class Songs extends CI_Controller
     {
         $CI =& get_instance();
         $CI->load->model('Song_model');
+        $this->load->model('Playlist_model');
         $songs = $CI->Song_model->get_all_with_user();
         $data['songs'] = $songs;
-        $this->load->view('songs/index', $data);
+        $user_id = $this->session->userdata('user_id');
+        $playlists = $this->Playlist_model->get_by_user($user_id);
+        $playlist_songs = array();
+        foreach ($playlists as $playlist) {
+            $playlist_songs[$playlist['id']] = $this->Playlist_model->get_songs($playlist['id']);
+        }
+        $data['playlists'] = $playlists;
+        $data['playlist_songs'] = $playlist_songs;
+        
+        $this->render($this->set_views->songs(), $data);
     }
     public function my_songs()
     {
@@ -89,7 +103,7 @@ class Songs extends CI_Controller
         $user_id = $this->session->userdata('user_id');
         $songs = $this->Song_model->get_by_user($user_id);
         $data['songs'] = $songs;
-        $this->load->view('songs/my_songs', $data);
+        $this->render($this->set_views->mysongs(), $data);
     }
 
     public function edit($id)
@@ -106,9 +120,9 @@ class Songs extends CI_Controller
     }
 
     if ($this->input->method() === 'post') {
-        $title = $this->input->post('title');
-        $artist = $this->input->post('artist');
-        $genre = $this->input->post('genre');
+        $title = $this->input->post('title',true);
+        $artist = $this->input->post('artist',true);
+        $genre = $this->input->post('genre',true);
 
         $song_image = $song['image_path']; // default to existing image
 
@@ -136,7 +150,8 @@ class Songs extends CI_Controller
     }
 
     $data['song'] = $song;
-    $this->load->view('songs/edit', $data);
+    
+    $this->render($this->set_views->editsong(), $data);
 }
 
     public function delete($id)

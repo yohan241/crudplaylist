@@ -1,4 +1,4 @@
-<?php $this->load->view('templates/header'); ?>
+ 
 <div class="container mt-3 px-4">
     <h2>Create Playlist</h2>
     <?php if (isset($error)): ?>
@@ -14,4 +14,4 @@
         <a href="<?php echo site_url('playlists'); ?>" class="btn btn-link">Back to My Playlists</a>
     </form>
 </div>
-<?php $this->load->view('templates/footer'); ?>
+ 

@@ -40,14 +40,26 @@ class Playlist_model extends CI_Model
         $this->db->update('playlists');
     }
 
-    public function add_song($playlist_id, $song_id)
-    {
-        $data = array(
+    public function add_song($playlist_id, $song_id) {
+        $exists = $this->db->get_where('playlist_songs', [
             'playlist_id' => $playlist_id,
             'song_id' => $song_id
-        );
-        $this->db->insert('playlist_songs', $data);
+        ])->row();
+    
+        if (!$exists) {
+            $this->db->insert('playlist_songs', [
+                'playlist_id' => $playlist_id,
+                'song_id' => $song_id,
+                'is_valid' => 1
+            ]);
+        } else {
+            $this->db->where([
+                'playlist_id' => $playlist_id,
+                'song_id' => $song_id
+            ])->set('is_valid', 1)->update('playlist_songs');
+        }
     }
+    
 
     public function get_songs($playlist_id)
     {

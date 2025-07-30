@@ -1,4 +1,4 @@
-<?php $this->load->view('templates/header'); ?>
+ 
 <div class="container mt-3 px-4 w-100">
     <h2>Add Song to Playlist: <?php echo htmlspecialchars($playlist['name']); ?></h2>
     <form method="post" action="">
@@ -17,4 +17,4 @@
         <a href="<?php echo site_url('playlists'); ?>" class="btn btn-link">Back to My Playlists</a>
     </form>
 </div>
-<?php $this->load->view('templates/footer'); ?>
+ 

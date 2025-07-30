@@ -1,8 +1,10 @@
-<?php $this->load->view('templates/header'); ?>
+ 
 <div class="container mt-3 px-4">
     <h2 class=" mb-3"><i class="bi bi-music-note-beamed  mb-3">&nbsp;My Songs</i></h2>
     <?php if (empty($songs)): ?>
+        
         <div class="alert alert-info">You have not uploaded any songs yet.</div>
+        <a href="<?php echo site_url('upload_song'); ?>" class="btn btn-success mb-3">Upload a Song?</a>
     <?php else: ?>
         <div class="row g-3 mb-5">
             <?php foreach ($songs as $song): ?>
@@ -41,4 +43,4 @@
         </div>
     <?php endif; ?>
 </div>
-<?php $this->load->view('templates/footer'); ?>
+ 

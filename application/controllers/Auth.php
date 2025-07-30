@@ -1,12 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Auth extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('User_model');
         $this->load->library('session');
         $this->load->helper(array('form', 'url'));
+        $this->load->library('set_views');
     }
 
     public function register() {
@@ -35,13 +36,14 @@ class Auth extends CI_Controller {
 
             if ($this->form_validation->run() === FALSE) {
                 $data['error'] = validation_errors();
-                $this->load->view('auth/register', $data);
+
+                $this->render($this->set_views->register(), $data);
                 return;
             }
 
-            $username = $this->input->post('username');
-            $email = $this->input->post('email');
-            $password = $this->input->post('password');
+            $username = $this->input->post('username', TRUE);
+            $email = $this->input->post('email', TRUE);
+            $password = $this->input->post('password', TRUE);
 
             $user_id = $this->User_model->create($username, $email, $password);
             if ($user_id) {
@@ -49,10 +51,10 @@ class Auth extends CI_Controller {
                 redirect('login');
             } else {
                 $data['error'] = 'Registration failed.';
-                $this->load->view('auth/register', $data);
+                $this->render($this->set_views->register(), $data);
             }
         } else {
-            $this->load->view('auth/register');
+            $this->render($this->set_views->register());
         }
     }
 
@@ -73,12 +75,12 @@ class Auth extends CI_Controller {
                 if (form_error('password')) {
                     $data['error'] .= form_error('password');
                 }
-                $this->load->view('auth/login', $data);
+                $this->render($this->set_views->login(), $data);
                 return;
             }
 
-            $username = $this->input->post('username');
-            $password = $this->input->post('password');
+            $username = $this->input->post('username', TRUE);
+            $password = $this->input->post('password',  TRUE);
             $user = $this->User_model->get_by_username($username);
             if ($user && password_verify($password, $user['password_hash'])) {
                 $this->session->set_userdata('user_id', $user['id']);
@@ -86,10 +88,10 @@ class Auth extends CI_Controller {
                 redirect('pages/view');
             } else {
                 $data['error'] = 'Invalid username or password.';
-                $this->load->view('auth/login', $data);
+                $this->render($this->set_views->login(), $data);
             }
         } else {
-            $this->load->view('auth/login');
+            $this->render($this->set_views->login());
         }
     }
 

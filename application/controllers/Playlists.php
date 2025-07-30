@@ -2,13 +2,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Playlists extends CI_Controller {
+class Playlists extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Playlist_model');
         $this->load->model('Song_model');
         $this->load->library('session');
         $this->load->helper(array('form', 'url'));
+        $this->load->library('set_views');
     }
 
     public function index() {
@@ -23,15 +24,21 @@ class Playlists extends CI_Controller {
         }
         $data['playlists'] = $playlists;
         $data['playlist_songs'] = $playlist_songs;
-        $this->load->view('playlists/index', $data);
+        
+        
+        $this->render($this->set_views->playlists(), $data);
+        return;
     }
+    
+   
 
     public function create() {
         if (!$this->session->userdata('user_id')) {
             redirect('login');
         }
         if ($this->input->method() === 'post') {
-            $name = $this->input->post('name');
+            $name = $this->input->post('name', TRUE);
+
             $user_id = $this->session->userdata('user_id');
             if (empty($name)) {
                 $data['error'] = 'Playlist name is required.';
@@ -46,7 +53,9 @@ class Playlists extends CI_Controller {
                 $this->load->view('playlists/create', $data);
             }
         } else {
-            $this->load->view('playlists/create');
+           
+            $this->render($this->set_views->createplaylist());
+            return;
         }
     }
 
@@ -73,7 +82,7 @@ class Playlists extends CI_Controller {
         }
         $songs = $this->Song_model->get_all_with_user();
         if ($this->input->method() === 'post') {
-            $song_id = $this->input->post('song_id');
+            $song_id = $this->input->post('song_id', TRUE);
             if ($song_id) {
                 $this->Playlist_model->add_song($playlist_id, $song_id);
                 redirect('playlists');
@@ -81,7 +90,8 @@ class Playlists extends CI_Controller {
         }
         $data['playlist'] = $playlist;
         $data['songs'] = $songs;
-        $this->load->view('playlists/add_song', $data);
+        
+        $this->render($this->set_views->addtoplaylist(),$data);
 
     }
      public function remove_song($playlist_id, $song_id) {
@@ -95,4 +105,23 @@ class Playlists extends CI_Controller {
         }
         redirect('playlists');
     }
+    public function add_song_dynamic() {
+        if (!$this->session->userdata('user_id')) {
+            redirect('login');
+        }
+    
+        $playlist_id = $this->input->post('playlist_id');
+        $song_id = $this->input->post('song_id');
+    
+        if ($playlist_id && $song_id) {
+            $playlist = $this->Playlist_model->get($playlist_id);
+            $user_id = $this->session->userdata('user_id');
+    
+            if ($playlist && $playlist['user_id'] == $user_id) {
+                $this->Playlist_model->add_song($playlist_id, $song_id);
+            }
+        }
+        redirect('songs');
+    }
+    
 }

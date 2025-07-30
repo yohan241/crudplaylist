@@ -21,11 +21,12 @@
 
   <div
     class="container  bg-white h-100 border border-dark position-absolute start-50 translate-middle-x z-n1  border-top-0 shadowy position-fixed">
+    
   </div>
   <!-- Navbar -->
 
   <?php if ($this->session->userdata('user_id')): ?>
-    <nav class="navbar navbar-expand-lg  bg-primary" data-bs-theme="light">
+    <nav class="navbar navbar-expand-md  bg-primary sticky-top " data-bs-theme="light">
       <div class="container">
         <a class="navbar-brand lexend-mega-hi " href="<?= base_url() ?>"><img
             src="<?= base_url('assets/images/logo.png'); ?>"> </a>
@@ -34,7 +35,7 @@
           aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="navbar-collapse collapse show" id="navbarColor01" style="">
+        <div class="navbar-collapse collapse " id="navbarColor01" style="">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
               <a class="nav-link active" href="<?= site_url(); ?>">Home
@@ -80,9 +81,11 @@
 
           </ul>
           <form class="d-flex me-2" method="get" action="<?= site_url('songs/search'); ?>">
-            <input class="form-control me-sm-2" type="search" name="q" placeholder="Find songs, artists..."
+            <input class="form-control" type="search" name="q" placeholder="Find songs, artists..."
               value="<?= isset($search_query) ? htmlspecialchars($search_query) : '' ?>">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+              <button class="btn btn-secondary text-black rounded-end-pill px-3" type="submit">
+                <i class="bi bi-arrow-right"></i>
+              </button>
           </form>
           
           <div class="d-flex me-2">
@@ -95,7 +98,7 @@
 
 
   <?php else: ?>
-    <nav class="navbar navbar-expand-lg  bg-primary" data-bs-theme="light">
+    <nav class="navbar navbar-expand-md sticky-top bg-primary" data-bs-theme="light">
       <div class="container">
         <a class="navbar-brand lexend-mega-hi " href="<?= base_url() ?>"><img
             src="<?= base_url('assets/images/logo.png'); ?>"> </a>
@@ -104,7 +107,7 @@
           aria-controls="navbarColor01" aria-expanded="true" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="navbar-collapse collapse show" id="navbarColor01" style="">
+        <div class="navbar-collapse collapse " id="navbarColor01" style="">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
               <a class="nav-link active" href="<?= site_url(); ?>">Home
@@ -115,7 +118,7 @@
           </ul>
           <div class="d-flex me-2">
 
-          <a class="btn btn-success" href="<?= site_url('login'); ?>"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+          <a class="btn btn-success" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>" href="<?= site_url('login'); ?>"><i class="bi bi-box-arrow-in-right"></i> Login</a>
           </div>
         </div>
       </div>
