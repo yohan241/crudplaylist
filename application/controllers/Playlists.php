@@ -22,6 +22,7 @@ class Playlists extends MY_Controller {
         foreach ($playlists as $playlist) {
             $playlist_songs[$playlist['id']] = $this->Playlist_model->get_songs($playlist['id']);
         }
+        
         $data['playlists'] = $playlists;
         $data['playlist_songs'] = $playlist_songs;
         
@@ -42,7 +43,7 @@ class Playlists extends MY_Controller {
             $user_id = $this->session->userdata('user_id');
             if (empty($name)) {
                 $data['error'] = 'Playlist name is required.';
-                $this->load->view('playlists/create', $data);
+                $this->render($this->set_views->createplaylist());
                 return;
             }
             $playlist_id = $this->Playlist_model->create($user_id, $name);
@@ -50,7 +51,7 @@ class Playlists extends MY_Controller {
                 redirect('playlists');
             } else {
                 $data['error'] = 'Failed to create playlist.';
-                $this->load->view('playlists/create', $data);
+                $this->render($this->set_views->createplaylist());
             }
         } else {
            

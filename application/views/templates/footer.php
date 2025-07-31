@@ -1,19 +1,25 @@
 <!-- Persistent Music Player Footer -->
-<div id="musicPlayerFooter"
-  class="fixed-bottom bg-white border-top border-dark shadow-lg align-items-center justify-content-between px-3 py-2"
+
+<div id="musicPlayerFooter"  class="fixed-bottom bg-white border-top border-dark shadow-lg align-items-center justify-content-between px-3 py-2"
   style="z-index: 9999; min-height: 70px; display: none;">
-  <div class="d-flex align-items-center gap-3">
+  <!-- Controls -->
+  <div class="player-controls d-flex align-items-center gap-2 mb-2 mb-sm-0">
     <button id="playerPrev" class="btn btn-outline-secondary btn-sm"><i class="bi bi-skip-backward-fill"></i></button>
     <button id="playerPlayPause" class="btn btn-outline-primary btn-sm"><i class="bi bi-play-fill"></i></button>
     <button id="playerNext" class="btn btn-outline-secondary btn-sm"><i class="bi bi-skip-forward-fill"></i></button>
-    <div class="ms-3">
-      <img src="" class="img-thumbnail me-2" id="playerSongImage" style="width:50px; height:50px; object-fit:cover;">
-      <span id="playerSongTitle" class="fw-bold">No song playing</span>
-      <span id="playerSongArtist" class="text-muted ms-2"></span>
+  </div>
+
+  <!-- Meta Info -->
+  <div class="player-meta d-flex align-items-center gap-2 text-center mb-2 mb-sm-0">
+    <img src="" class="img-thumbnail me-2" id="playerSongImage" style="width:50px; height:50px; object-fit:cover;">
+    <div>
+      <span id="playerSongTitle" class="fw-bold">No song playing</span><br>
+      <small id="playerSongArtist" class="text-muted"></small>
     </div>
   </div>
   <audio id="audioPlayer" preload="none"></audio>
-  <div class="d-flex align-items-center gap-2">
+  <!-- Seekbar -->
+  <div class="player-seek d-flex align-items-center gap-2">
     <span id="playerCurrentTime" style="min-width: 40px;">0:00</span>
     <input type="range" id="playerSeek" min="0" max="100" value="0" style="width: 120px;">
     <span id="playerDuration" style="min-width: 40px;">0:00</span>

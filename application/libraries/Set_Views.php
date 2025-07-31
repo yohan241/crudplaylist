@@ -32,7 +32,7 @@ class Set_Views {
         return 'songs/edit';
     }
     public function addtoplaylist() {
-        return 'songs/add_song';
+        return 'playlists/add_song';
     }
 }
 

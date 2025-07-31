@@ -10,6 +10,7 @@ class Songs extends MY_Controller
         $this->load->library('session');
         $this->load->helper(array('form', 'url'));
         $this->load->library('set_views');
+        require_once(APPPATH . 'third_party/getid3/getid3.php');
     }
 
     public function search()
@@ -41,7 +42,8 @@ class Songs extends MY_Controller
             // Upload song file
             if (!$this->upload->do_upload('song_file')) {
                 $data['error'] = $this->upload->display_errors();
-                $this->load->view('songs/upload', $data);
+                
+                $this->render($this->set_views->addsong(),$data);
                 return;
             }
             $file_data = $this->upload->data();
