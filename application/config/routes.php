@@ -64,6 +64,7 @@ $route['upload_song'] = 'songs/upload';
 
 // Song listing route
 $route['songs'] = 'songs/index';
+$route['song/index/(:num)'] = 'song/index/$1';
 
 // Playlist routes
 $route['playlists'] = 'playlists/index';

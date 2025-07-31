@@ -1,8 +1,5 @@
  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-<link href="https://bootswatch.com/5/brite/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+
 <div class="container mt-5 px-5">
 <div class="formpage w-auto">
     <h2>Register</h2>
@@ -32,7 +29,7 @@
             <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
         </div>
 
-        <div class="btn-group" role="group" >
+        <div class="btn-group text-right" role="group" >
             <button type="submit" class="btn btn-primary">Register</button>
             <a href="<?php echo site_url('login'); ?>" class="btn btn-link">Already have an account? Login</a>
         </div>

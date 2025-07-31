@@ -23,6 +23,7 @@ class Playlist_model extends CI_Model
     {
         $this->db->where('user_id', $user_id);
         $this->db->where('is_valid', 1);
+        $this->db->order_by("id", "desc");
         $query = $this->db->get('playlists');
         return $query->result_array();
     }
@@ -70,6 +71,7 @@ class Playlist_model extends CI_Model
         $this->db->where('playlist_songs.is_valid', 1);
         $this->db->where('playlist_songs.playlist_id', $playlist_id);
         $this->db->where('songs.is_valid', 1);
+        $this->db->order_by("songs.id", "desc");
         $query = $this->db->get();
         return $query->result_array();
     }

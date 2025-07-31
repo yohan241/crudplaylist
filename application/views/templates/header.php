@@ -21,7 +21,7 @@
 
   <div
     class="container  bg-white h-100 border border-dark position-absolute start-50 translate-middle-x z-n1  border-top-0 shadowy position-fixed">
-    
+
   </div>
   <!-- Navbar -->
 
@@ -45,9 +45,9 @@
             <li class="nav-item">
               <a class="nav-link" href="<?= site_url(); ?>songs">Recent Songs</a>
             </li>
-            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
-              <hr class="d-lg-none my-2 text-white-50">
+            <li class="nav-item py-2 py-lg-1 col-12 col-md-auto">
+              <div class="vr d-none d-md-flex h-100 mx-md-2 text-black"></div>
+              <hr class="d-md-none my-2 text-black-50">
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?= site_url(); ?>playlists">My Playlist</a>
@@ -55,9 +55,9 @@
             <li class="nav-item">
               <a class="nav-link" href="<?= site_url(); ?>my_songs">My Songs</a>
             </li>
-            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
-              <hr class="d-lg-none my-2 text-white-50">
+            <li class="nav-item py-2 py-lg-1 col-12 col-md-auto">
+              <div class="vr d-none d-md-flex h-100 mx-md-2 text-black"></div>
+              <hr class="d-md-none my-2 text-black-50">
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -70,7 +70,7 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="<?= site_url(); ?>upload_song">Upload Your Song</a>
                   <a class="dropdown-item" href="<?= site_url(); ?>create_playlist">Create a Playlist</a>
-                 
+
                 <?php else: ?>
                   <a class="dropdown-item text-primary-emphasis" href="<?= site_url('login'); ?>">
                     <i class="bi bi-box-arrow-in-right"></i> Login
@@ -83,18 +83,28 @@
           <form class="d-flex me-2" method="get" action="<?= site_url('songs/search'); ?>">
             <input class="form-control" type="search" name="q" placeholder="Find songs, artists..."
               value="<?= isset($search_query) ? htmlspecialchars($search_query) : '' ?>">
-              <button class="btn btn-secondary text-black rounded-end-pill px-3" type="submit">
-                <i class="bi bi-arrow-right"></i>
-              </button>
+
+            <button class="btn btn-secondary text-black rounded-end-pill px-3" type="submit">
+              <i class="bi bi-arrow-right"></i>
+            </button>
           </form>
+
+            <div class="d-flex flex-column flex-md-row align-items-center gap-2 ms-2">
+
+              <div class="d-none d-md-block vr mx-2 text-black"></div>
+              <hr class="d-md-none w-100 my-1 text-black-50">
+
           
-          <div class="d-flex me-2">
+              <button class="btn btn-danger d-none d-md-inline-flex align-items-center" data-bs-toggle="modal"
+                data-bs-target="#logoutModal">
+                <i class="bi bi-box-arrow-right"></i>
+              </button>
 
-            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal">
-  <i class="bi bi-box-arrow-right"></i>
-</button>
+              <button class="btn btn-danger d-inline d-md-none" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                Logout
+              </button>
+            </div>
 
-          </div>
         </div>
       </div>
     </nav>
@@ -121,7 +131,9 @@
           </ul>
           <div class="d-flex me-2">
 
-          <a class="btn btn-success" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>" href="<?= site_url('login'); ?>"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            <a class="btn btn-success" data-toggle="tooltip" data-html="true"
+              title="<em>Tooltip</em> <u>with</u> <b>HTML</b>" href="<?= site_url('login'); ?>"><i
+                class="bi bi-box-arrow-in-right"></i> Login</a>
           </div>
         </div>
       </div>
@@ -134,23 +146,23 @@
 
   <!-- End Navbar -->
   <!-- Logout Confirmation Modal -->
-<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content border-dark">
-      <div class="modal-header bg-danger text-white">
-        <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to log out?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <a href="<?= site_url('logout'); ?>" class="btn btn-danger">Logout</a>
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-dark">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to log out?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <a href="<?= site_url('logout'); ?>" class="btn btn-danger">Logout</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
 

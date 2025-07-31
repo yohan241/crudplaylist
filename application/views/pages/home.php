@@ -96,14 +96,14 @@
         </a>
       </div>
     </div>
-      <div class="dash-footer">
+      <div class="dash-footer mb-2">
         <small>🎵 Keep creating. Keep exploring. PlayUs is yours.</small>
       </div>
     </div>
     <!-- WHEN NOT REGISTERED -->
 
   <?php else: ?>
-    <!-- Modern Hero Section -->
+
     <div class="row my-5 justify-content-center">
 
       <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
@@ -117,37 +117,45 @@
 
       </div>
     </div>
-
+    <div class="justify-content-center w-100 "><hr  width="50%" class="mt-4 mb-2 mx-auto">
+ ></div>
+    
     <!-- Features Section -->
+    
     <div class="row g-4 justify-content-center mt-4">
-      <div class="col-12 col-md-6 col-lg-4 d-flex">
+      <div class="row g-4 justify-content-center text-center mt-0"><h6 class="mt-0 text-muted" style="font-style: italic">Want to explore some music?</h6><h3 class="mt-0"><strong>Here is what you can do when you register on PlayUs!</strong></h3></div></div>
+    <div class="dashboard-scroll-wrapper">
+      <div class="dashboard-actions">
+      <div class="col-12 col-md-6 col-lg-3 d-flex">
         <div class="neo-brutal-window flex-fill text-center p-4" style="border-radius:24px;">
           <div class="neo-brutal-title" style="font-size:1.3rem;"><i
               class="bi bi-cloud-arrow-up neo-brutal-icon"></i>Upload Your Music</div>
           <p>Share your original tracks with the world. MP3, WAV, and OGG supported.</p>
         </div>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 d-flex">
+      <div class="col-12 col-md-6 col-lg-3 d-flex">
         <div class="neo-brutal-window flex-fill text-center p-4" style="border-radius:24px;">
           <div class="neo-brutal-title" style="font-size:1.3rem;"><i
               class="bi bi-music-note-list neo-brutal-icon"></i>Create Playlists</div>
           <p>Build and manage custom playlists from your favorite songs.</p>
         </div>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 d-flex">
+      <div class="col-12 col-md-6 col-lg-3 d-flex">
         <div class="neo-brutal-window flex-fill text-center p-4" style="border-radius:24px;">
           <div class="neo-brutal-title" style="font-size:1.3rem;"><i class="bi bi-search neo-brutal-icon"></i>Discover &
             Search</div>
           <p>Find new music from the community and add it to your playlists.</p>
         </div>
       </div>
-    </div>
+    </div></div></div>
   <?php endif; ?>
 
 
 </div>
 
 <style>
+  
+    
   .dashboard-box {
     background: #fff;
     border: 4px solid #222;
@@ -172,6 +180,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
+    padding-top: 1rem;
   }
 
   .dash-card {
@@ -223,7 +232,10 @@
     scroll-snap-type: x mandatory;
     gap: 1rem;
     padding-bottom: 1rem;
-    padding: 0 2rem 1rem; 
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    justify-content: flex-start;
   }
 
   .dash-card {

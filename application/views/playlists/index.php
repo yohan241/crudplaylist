@@ -52,7 +52,7 @@
                             <div id="collapse<?php echo $playlist['id']; ?>" class="accordion-collapse collapse"
                                 aria-labelledby="heading<?php echo $playlist['id']; ?>"
                                 data-bs-parent="#playlistAccordion<?php echo $playlist['id']; ?>">
-                                <div class="accordion-body" style="max-height: 300px; overflow-y: auto;">
+                                <div class="accordion-body" style="max-height: 70vh; overflow-y: auto;">
                                     <?php if (!empty($playlist_songs[$playlist['id']])): ?>
                                         <div class="row g-2">
                                             <?php foreach ($playlist_songs[$playlist['id']] as $index => $song): ?>

@@ -12,7 +12,25 @@
 	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
 	display: none; /* shown when playing */
 }
-@media (max-width: 576px) {
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.navbar .nav-link {
+	  padding-left: 0.5rem;
+	  padding-right: 0.5rem;
+	  font-size: 0.9rem;
+	}
+  
+	.navbar .dropdown-menu {
+	  font-size: 0.9rem;
+	}
+	.formpage{
+		max-width: 100% !important;
+	}
+  }
+  
+@media (max-width: 768px) {
+	.formpage{
+		max-width: 100% !important;
+	}
   #musicPlayerFooter {
 
     align-items: stretch !important;
@@ -48,6 +66,8 @@
   #musicPlayerFooter button {
     flex: 1 0 auto;
   }
+
+
 }
 
 body {
@@ -185,6 +205,15 @@ img:hover {
 
 .formpage{
 	align-content: center;
+	text-align: left;
+	max-width: 550px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input,.form-select{
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .accordion-body {

@@ -1,6 +1,6 @@
  
 
-<div class="container mt-3 px-4">
+<div class="container mt-5 px-5">
 <div class="formpage">
     <h2>Upload Song</h2>
     <?php if (isset($error)): ?>
@@ -180,7 +180,9 @@
             <label for="song_file" class="form-label">Song File</label>
             <input type="file" class="form-control" id="song_file" name="song_file" accept=".mp3,.wav,.ogg" required>
         </div>
+        <div class="btn-group text-right" role="group">
         <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
     </form>
 </div></div>
  

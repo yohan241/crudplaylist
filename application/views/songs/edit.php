@@ -1,7 +1,7 @@
  
-<div class="container mt-3 px-4">
-    <h2>Edit Song</h2>
+<div class="container mt-5 px-5">
     <div class="formpage">
+    <h2>Edit Song</h2>
     <form method="post" action="" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -177,8 +177,10 @@
 
             </select>
         </div>
+        <div class="btn-group text-right w-100" role="group">
         <button type="submit" class="btn btn-primary">Save Changes</button>
         <a href="<?php echo site_url('my_songs'); ?>" class="btn btn-link">Cancel</a>
+        </div>
     </form>
 </div></div>
  

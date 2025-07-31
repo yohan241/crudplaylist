@@ -1,4 +1,35 @@
- 
+ <style>
+    @keyframes appear {
+        0% {
+          opacity: 0;
+
+          transform: translateX(-100%);
+          filter: blur(10px);
+        }
+        50% {
+          opacity: 0.3;
+
+          transform: translateX(-80%);
+          filter: blur(7px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+          filter: blur(0px);
+        }
+      }
+      @media screen and (max-width: 768px) {
+        .song-card {
+        animation: appear 0.5s ease-in-out;
+        animation-timeline: view();
+        animation-range: entry 0% cover 20%;
+      }
+        }
+      
+
+ </style>
+
+
 <div class="container mt-3 px-4">
     <h2 class=" mb-3"><i class="bi bi-music-note-beamed "> &nbsp;All Songs</i></h2>
     <?php if (empty($songs)): ?>
@@ -58,6 +89,12 @@
                 </div>
             <?php endif; ?>
     </div>
+    <?php if (!empty($pagination_links)): ?>
+    <div class="d-flex justify-content-center mt-4">
+        <?php echo $pagination_links; ?>
+    </div>
+<?php endif; ?>
+
     <!-- Add to Playlist Modal -->
     <div class="modal fade" id="addToPlaylistModal" tabindex="-1" aria-labelledby="addToPlaylistModalLabel"
         aria-hidden="true">
